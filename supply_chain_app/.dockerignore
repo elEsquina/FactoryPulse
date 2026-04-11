@@ -1,0 +1,9 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.log
+runtime/cache/*
+runtime/embeddings/*
+.git

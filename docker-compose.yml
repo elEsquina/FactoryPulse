@@ -1,0 +1,48 @@
+services:
+  neo4j:
+    image: neo4j:latest
+    container_name: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/password
+    volumes:
+      - Data:/data
+    healthcheck:
+      test: ["CMD", "cypher-shell", "-u", "neo4j", "-p", "password", "RETURN 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  supply_chain_app:
+    build:
+      context: ./supply_chain_app
+    container_name: supply_chain_app
+    ports:
+      - "8000:8000"
+    environment:
+      NEO4J_URI: bolt://neo4j:7687
+      NEO4J_USER: neo4j
+      NEO4J_PASSWORD: password
+      NEO4J_DATABASE: neo4j
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      AUTO_BOOTSTRAP_DATA: "true"
+      PROCESSED_DATA_DIR: /app/data/processed
+      EMBEDDING_CACHE_NPZ: /app/runtime/embeddings/products.npz
+      EMBEDDING_CACHE_META: /app/runtime/embeddings/products.meta.json
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    volumes:
+      - ./DataExploration/Processed:/app/data/processed:ro
+      - ./supply_chain_app/runtime:/app/runtime
+    restart: unless-stopped
+
+volumes:
+  Data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./Data

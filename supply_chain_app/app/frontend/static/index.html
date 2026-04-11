@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FactoryPulse - Executive Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="bg-layer" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">FactoryPulse</div>
+    <nav class="nav-tabs">
+      <button class="tab active" data-target="overview">Overview</button>
+      <button class="tab" data-target="operations">Operations</button>
+      <button class="tab" data-target="copilot">AI Copilot</button>
+    </nav>
+    <button id="refresh-all" class="btn-ghost">Refresh</button>
+  </header>
+
+  <main class="container">
+    <section class="panel active" id="panel-overview">
+      <section class="hero card">
+        <h1>Factory Operations Dashboard</h1>
+        <p>A focused executive view of throughput, demand fulfillment, and operational risk across products, plants, and storages.</p>
+      </section>
+
+      <section class="kpi-grid">
+        <article class="kpi card"><span>Total Products</span><strong id="kpi-products">0</strong></article>
+        <article class="kpi card"><span>Total Plants</span><strong id="kpi-plants">0</strong></article>
+        <article class="kpi card"><span>Total Storages</span><strong id="kpi-storages">0</strong></article>
+        <article class="kpi card"><span>At-Risk Products</span><strong id="kpi-risk">0</strong></article>
+      </section>
+
+      <section class="grid-2">
+        <article class="card">
+          <div class="card-head"><h2>Production vs Delivery Trend</h2><span>Monthly units</span></div>
+          <svg id="flow-chart" viewBox="0 0 700 320" preserveAspectRatio="none"></svg>
+        </article>
+        <article class="card">
+          <div class="card-head"><h2>Product Group Distribution</h2><span>Portfolio mix</span></div>
+          <div class="donut-wrap">
+            <svg id="group-donut" viewBox="0 0 240 240"></svg>
+            <div id="group-legend" class="legend"></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="grid-2">
+        <article class="card">
+          <div class="card-head"><h2>Top Delivery Products</h2><span>By cumulative units</span></div>
+          <div id="delivery-bars" class="bars"></div>
+        </article>
+        <article class="card">
+          <div class="card-head"><h2>Risk Profile</h2><span>High / Medium / Low</span></div>
+          <svg id="risk-radar" viewBox="0 0 520 260"></svg>
+        </article>
+      </section>
+    </section>
+
+    <section class="panel" id="panel-operations">
+      <section class="grid-2">
+        <article class="card">
+          <div class="card-head"><h2>Plant Load</h2><span>Assigned products + fulfillment ratio</span></div>
+          <div id="plant-load" class="stack"></div>
+        </article>
+        <article class="card">
+          <div class="card-head"><h2>Storage Pressure</h2><span>Products per storage node</span></div>
+          <div id="storage-heat" class="stack"></div>
+        </article>
+      </section>
+
+      <article class="card">
+        <div class="card-head">
+          <h2>Risk Watchlist</h2>
+          <button class="btn-ghost" id="refresh-risk">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Product</th><th>Group</th><th>Fulfillment</th><th>Risk</th></tr>
+            </thead>
+            <tbody id="risk-table"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <h2>Product Explorer</h2>
+          <input id="product-filter" class="input" placeholder="Search by code or group" />
+        </div>
+        <div class="inspector">
+          <div id="product-list" class="product-list"></div>
+          <div id="product-detail" class="product-detail">Select a product to view operational details.</div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel" id="panel-copilot">
+      <article class="card">
+        <div class="card-head">
+          <h2>Factory AI Copilot</h2>
+          <span>Routed automatically by query intent</span>
+        </div>
+        <div class="copilot-layout">
+          <div id="chat-box" class="chat-box">
+            <div class="bubble ai">Ask practical questions for your pitch: bottlenecks, performance gaps, plant assignments, and risk.</div>
+          </div>
+          <div class="copilot-side">
+            <textarea id="copilot-input" class="input area" placeholder="Example: Which products are assigned to plant 1903?"></textarea>
+            <button id="send-btn" class="btn-primary">Ask Copilot</button>
+            <div id="chips" class="chips"></div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
