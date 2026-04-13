@@ -18,7 +18,7 @@ class SemanticRAGService:
                 strategy="Gemini RAG",
                 answer="No semantic context was available to answer this question.",
                 route_reason="Fallback because no embeddings were available.",
-                benchmark_reference="graphrag_benchmark.ipynb: Gemini RAG highest overall average.",
+                benchmark_reference="graphrag_benchmark.ipynb: Gemini RAG remains strong for narrative synthesis.",
             )
 
         context_lines = []
@@ -42,7 +42,7 @@ class SemanticRAGService:
             strategy="Gemini RAG",
             answer=answer,
             route_reason="Open-ended narrative path selected for broad synthesis.",
-            benchmark_reference="Notebook avg score: Gemini RAG 4.89/5.",
+            benchmark_reference="Notebook avg score (DeepSeek-judge run): Gemini RAG 4.17/5.",
             sources=sources,
             context=context,
         )

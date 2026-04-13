@@ -12,25 +12,25 @@ class BenchmarkApproachScore:
 
 
 BENCHMARK_SOURCE = "graphrag_benchmark.ipynb"
-BENCHMARK_DATE_NOTE = "Notebook outputs captured locally on this project."
+BENCHMARK_DATE_NOTE = "Notebook outputs captured locally (20-question DeepSeek-judge benchmark)."
 
 # Extracted from notebook cell 27 outputs.
 APPROACH_SCORES: tuple[BenchmarkApproachScore, ...] = (
     BenchmarkApproachScore(
         name="Gemini RAG",
-        average_score=4.89,
-        strength="Best overall for open-ended narrative answers.",
+        average_score=4.17,
+        strength="Strong narrative synthesis and broad semantic context.",
         weakness="Can miss exact structured counts and strict graph filters.",
     ),
     BenchmarkApproachScore(
         name="GraphRAG",
-        average_score=4.83,
-        strength="Strong on relational and similarity reasoning.",
+        average_score=4.20,
+        strength="Best overall in the DeepSeek-judge benchmark and strongest on relational reasoning.",
         weakness="Can be limited when seed node selection is narrow.",
     ),
     BenchmarkApproachScore(
         name="Text2Cypher",
-        average_score=3.67,
+        average_score=3.62,
         strength="Best precision for structural/analytical graph lookups.",
         weakness="Weak on fuzzy, semantic, and open-ended reasoning prompts.",
     ),
@@ -43,7 +43,7 @@ ROUTING_POLICY = {
 }
 
 BENCHMARK_HIGHLIGHTS = (
-    "Semantic similarity question favored GraphRAG (5.0 vs Gemini 4.67 vs Text2Cypher 1.0).",
-    "Text2Cypher excelled for exact Cypher-compatible lookups and aggregations.",
-    "Gemini RAG had highest global average (4.89) for narrative clarity and completeness.",
+    "DeepSeek-judge benchmark used 20 questions across structural, analytical, semantic, and reasoning intents.",
+    "Text2Cypher remained strongest for exact structural/analytical lookups.",
+    "GraphRAG scored highest overall (4.20) with strongest semantic/reasoning performance.",
 )

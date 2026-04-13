@@ -6,9 +6,11 @@ FastAPI-based production-style application rebuilt from scratch around a benchma
 
 `graphrag_benchmark.ipynb` outputs showed:
 
-- Gemini RAG average score: **4.89/5**
-- GraphRAG average score: **4.83/5**
-- Text2Cypher average score: **3.67/5**
+- GraphRAG average score: **4.20/5**
+- Gemini RAG average score: **4.17/5**
+- Text2Cypher average score: **3.62/5**
+
+Reference benchmark: 20 questions, DeepSeek as LLM judge.
 
 But each approach wins in different question classes. The app therefore uses intent routing:
 
