@@ -1,4 +1,10 @@
-Reports/
+Reports/*.md
+Reports/*.pptx
+Reports/FinalReport/*.aux
+Reports/FinalReport/*.f*
+Reports/FinalReport/*.log
+Reports/FinalReport/*.out
+Reports/FinalReport/*.gz
 __pycache__/
 Data/
 .vscode/
