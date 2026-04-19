@@ -735,3 +735,5 @@ If you want to understand the whole project with the least friction:
 ## Closing summary
 
 EventualSmartFactory is best understood as a complete applied GenAI systems project rather than a single app folder. The repository already contains the processed data, the benchmark notebook, the dashboard, and the final report, so the fastest path is to run Docker Compose and open the dashboard. The main things that are optional are the live LLM API keys and the raw source dataset for reproducing the EDA from scratch.
+
+**Authors** : Mohammed- Rida EL HANI, Othmane AZOUBI, Yahya MANSOUB
