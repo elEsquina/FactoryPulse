@@ -1,3 +1,4 @@
+#Connected Discord-GitHub // Stupid_corner // @__corner
 from __future__ import annotations
 
 import hashlib
